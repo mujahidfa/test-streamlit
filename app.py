@@ -29,7 +29,7 @@ def load_data(nrows, file_url):
 
 # disableUpload = True
 
-if protein_file is not None and peptide_file is not None:# and psm_file is not None:
+if protein_file is not None and peptide_file is not None:  # and psm_file is not None:
 
     # uploaded files
     PROTEIN_URL = protein_file
@@ -47,7 +47,7 @@ if protein_file is not None and peptide_file is not None:# and psm_file is not N
 
     # nrows=None means to render all rows
     peptide_data = load_data(None, PEPTIDE_URL)
-    psm_data = load_data(None, PSM_URL)
+    # psm_data = load_data(None, PSM_URL)
 
     input_protein = st.text_input("Enter peptide to search:", "")
 
