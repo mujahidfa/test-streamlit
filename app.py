@@ -4,7 +4,7 @@ from io import StringIO
 
 PROTEIN_URL = "./AllProteinGroups.tsv"
 PEPTIDE_URL = "./AllPeptides.psmtsv"
-PSM_URL = "./AllPSMs.psmtsv"
+# PSM_URL = "./AllPSMs.psmtsv"
 
 st.title("Visualizing Protein vs Peptide vs PSM Data")
 
@@ -14,9 +14,9 @@ protein_file = st.file_uploader(
 peptide_file = st.file_uploader(
     "Choose an AllPeptides.psmtsv file", type="psmtsv", encoding="utf-8"
 )
-psm_file = st.file_uploader(
-    "Choose an AllPSMs.psmtsv file", type="psmtsv", encoding="utf-8"
-)
+# psm_file = st.file_uploader(
+#     "Choose an AllPSMs.psmtsv file", type="psmtsv", encoding="utf-8"
+# )
 
 
 @st.cache(persist=True, hash_funcs={StringIO: StringIO.getvalue})
@@ -29,12 +29,12 @@ def load_data(nrows, file_url):
 
 # disableUpload = True
 
-if protein_file is not None and peptide_file is not None and psm_file is not None:
+if protein_file is not None and peptide_file is not None:# and psm_file is not None:
 
     # uploaded files
     PROTEIN_URL = protein_file
     PEPTIDE_URL = peptide_file
-    PSM_URL = psm_file
+    # PSM_URL = psm_file
 
     # None means to render all rows
     protein_data = load_data(None, PROTEIN_URL)
@@ -65,9 +65,9 @@ if protein_file is not None and peptide_file is not None and psm_file is not Non
 
     st.write(peptide_data[peptide_data["Base Sequence"] == selected_protein])
 
-    st.write("Here's what we found in AllPSMs:")
+    # st.write("Here's what we found in AllPSMs:")
 
-    st.write(psm_data[psm_data["Base Sequence"] == selected_protein])
+    # st.write(psm_data[psm_data["Base Sequence"] == selected_protein])
 
 else:
     st.write("All required files not uploaded yet!")
